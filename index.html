@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cryptography Demo</title>
+
+<!-- Tailwind / Font Awesome -->
+<link rel="stylesheet" href="/src/output.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+
+<style>
+/* ============================= */
+/* Global Style */
+/* ============================= */
+body{
+    background: linear-gradient(135deg,#ffffff,#e2e8f0);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+    margin:0;
+    padding:0;
+}
+
+/* ============================= */
+/* Section Separator */
+/* ============================= */
+section + section {
+    border-top: 2px solid #e2e8f0;
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+/* ============================= */
+/* Section Cards */
+/* ============================= */
+section{
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+section:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+/* ============================= */
+/* Header Logos and Text Center */
+/* ============================= */
+header .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+header .header-content img {
+    width: 170px;
+    height: 170px;
+}
+header h1{
+    text-align: center;
+    flex:1;
+}
+
+/* ============================= */
+/* Typography */
+/* ============================= */
+h1,h2{
+    letter-spacing:0.5px;
+}
+header h2{
+    margin-top:0.5rem;
+    color:#2563eb;
+}
+header p{
+    color:#64748b;
+    font-weight:500;
+}
+
+/* ============================= */
+/* Inputs */
+/* ============================= */
+input, textarea{
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    padding:0.6rem;
+    width:100%;
+    transition: all 0.3s ease;
+}
+input:focus, textarea:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 0 4px rgba(59,132,246,0.2);
+}
+
+/* ============================= */
+/* Buttons */
+/* ============================= */
+button{
+    font-weight:600;
+    border-radius:8px;
+    padding:0.6rem 1.2rem;
+    color:#fff;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    transition: all 0.25s ease;
+}
+button:hover{
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+button:active{
+    transform: scale(0.98);
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Buttons Colors */
+.bg-blue-500{ background:linear-gradient(135deg,#800080,#800080);}
+.bg-red-500{ background:linear-gradient(135deg,#c94a7a,#c94a7a);}
+.bg-green-600{ background:linear-gradient(135deg,#ff0000,#ff0000);}
+.bg-yellow-500{ background:linear-gradient(135deg,#dfb7b7,#615f58);}
+
+/* ============================= */
+/* Result Boxes */
+/* ============================= */
+#result, #result2, #result3{
+    background: #defcff;
+    border-left:5px solid #1D313c;
+    padding:1rem;
+    font-weight:600;
+    border-radius:6px;
+    white-space: pre-wrap;
+}
+
+/* Scrollable brute-force results */
+.scrollable-result{
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* RSA output */
+#outputText, #outputText1, #rsaOutput{
+    background:#f1f5f9;
+    border-radius:6px;
+    padding:0.8rem;
+}
+
+/* ============================= */
+/* Content Menu */
+ul li a{
+    display:inline-block;
+    padding:4px 0;
+    color:#1e293b;
+    font-weight:500;
+    transition: all 0.2s ease;
+}
+ul li a:hover{
+    color:#16a34a;
+    padding-left:10px;
+}
+
+/* ============================= */
+/* Header Background */
+header{
+    background:linear-gradient(135deg,#ffffff,#f8fafc);
+}
+
+/* ============================= */
+/* Mobile Improvements */
+@media (max-width:768px){
+    section{
+        padding:1.5rem;
+    }
+    .flex{
+        flex-direction:column;
+        gap:1rem;
+    }
+    button{
+        width:100%;
+    }
+}
+</style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+<!-- HEADER -->
+<header class="bg-white shadow-md p-6 flex flex-col items-center gap-4">
+    <div class="header-content">
+        <img src="https://i.pinimg.com/1200x/31/9e/62/319e62c33e1ec7cdd296fae8b488bc44.jpg" alt="Logo 1">
+        <h1>Royal University of Phnom Penh <br>Information Technology Engineering</h1>
+    </div>
+    <h2 style="text-align: center;">Encryption & Decryption Demo</h2>
+    <p style="text-align: center;">Lecture by: Mr. LIM Seyha</p>
+</header>
+
+<!-- GROUP MEMBERS -->
+<section class="max-w-6xl mx-auto mt-10 grid md:grid-cols-2 gap-10">
+    <div>
+        <h2><i class="fa-solid fa-user mr-2"></i>Group Members</h2>
+        <ul>
+            <li>Him KImhour</li>
+            <li>Horen Oudom</li>
+            <li>Son Pichsonika</li>
+            <li>Seang Sony</li>
+            <li>Oeung Chutema</li>
+            <li>Suy Monyoudom</li>
+        </ul>
+    </div>
+    <div>
+        <h2>Content</h2>
+        <ul>
+            <li><a href="#caesar">Caesar Cipher</a></li>
+            <li><a href="#shift">General Shift Cipher</a></li>
+            <li><a href="#affine">Affine Cipher</a></li>
+            <li><a href="#transposition">Transposition Cipher</a></li>
+            <li><a href="#rsa-key">RSA Key Generator</a></li>
+            <li><a href="#rsa-encrypt">RSA Encryption</a></li>
+        </ul>
+    </div>
+</section>
+
+<!-- CAESAR CIPHER -->
+<section id="caesar" class="max-w-4xl mx-auto mt-16">
+    <h2>Caesar Cipher</h2>
+    <input id="textInput" type="text" placeholder="Enter text...">
+    <div class="flex gap-4">
+        <button onclick="encryptTextDemo1()" class="bg-blue-500">Encrypt</button>
+        <button onclick="decryptTextDemo1()" class="bg-red-500">Decrypt</button>
+    </div>
+    <div id="result">No Result</div>
+</section>
+
+<!-- GENERAL SHIFT -->
+<section id="shift" class="max-w-4xl mx-auto mt-16">
+    <h2>General Shift Cipher</h2>
+    <input id="textInput2" type="text" placeholder="Enter text...">
+    <input id="keyInput" type="number" placeholder="Enter key (0-25)">
+    <div class="flex gap-4 flex-wrap">
+        <button onclick="encryptTextDemo2()" class="bg-blue-500">Encrypt</button>
+        <button onclick="decryptTextDemo2()" class="bg-red-500">Decrypt</button>
+        <button onclick="bruteForceAttack1()" class="bg-green-600">Brute Force</button>
+    </div>
+    <div id="result2" class="scrollable-result">No Result</div>
+</section>
+
+<!-- AFFINE -->
+<section id="affine" class="max-w-4xl mx-auto mt-16">
+    <h2>Affine Cipher</h2>
+    <input id="textInput3" type="text" placeholder="Enter text">
+    <input id="keyAInput" type="number" placeholder="Key a">
+    <input id="keyBInput4" type="number" placeholder="Key b">
+    <div class="flex gap-4 flex-wrap">
+        <button onclick="encryptTextDemo3()" class="bg-blue-500">Encrypt</button>
+        <button onclick="decryptTextDemo3()" class="bg-red-500">Decrypt</button>
+        <button onclick="bruteForceAttack()" class="bg-green-600">Brute Force</button>
+    </div>
+    <div id="result3" class="scrollable-result"></div>
+</section>
+
+<!-- TRANSPOSITION -->
+<section id="transposition" class="max-w-4xl mx-auto mt-16">
+    <h2>Transposition Cipher</h2>
+    <textarea id="inputText" rows="4" placeholder="Enter text..."></textarea>
+    <input id="key" type="number" placeholder="Key">
+    <div class="flex gap-4">
+        <button id="encryptBtn" class="bg-blue-500">Encrypt</button>
+        <button id="decryptBtn" class="bg-green-600">Decrypt</button>
+    </div>
+    <textarea id="outputText" rows="4" readonly></textarea>
+</section>
+
+<!-- RSA KEY GENERATOR -->
+<section id="rsa-key" class="max-w-4xl mx-auto mt-16">
+    <h2>RSA Key Generator</h2>
+    <input id="primeP" type="number" placeholder="Prime P">
+    <input id="primeQ" type="number" placeholder="Prime Q">
+    <button id="generateKeysBtn" class="bg-blue-500">Generate Keys</button>
+    <input id="publicKey" placeholder="Public Key" readonly>
+    <input id="privateKey" placeholder="Private Key" readonly>
+</section>
+
+<!-- RSA ENCRYPT / DECRYPT -->
+<section id="rsa-encrypt" class="max-w-4xl mx-auto mt-16 mb-20">
+    <h2>RSA Encrypt / Decrypt</h2>
+    <input id="message" type="text" placeholder="Message">
+    <div class="flex gap-4 flex-wrap">
+        <button id="rsaEncryptBtn" class="bg-green-600">Encrypt</button>
+        <button id="rsaDecryptBtn" class="bg-yellow-500">Decrypt</button>
+    </div>
+    <textarea id="rsaOutput" rows="4" placeholder="Encrypted / Decrypted text" readonly></textarea>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

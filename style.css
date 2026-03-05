@@ -1,0 +1,186 @@
+/* ============================= */
+/* Global Style */
+/* ============================= */
+
+body{
+    background: linear-gradient(135deg,#f1f5f9,#e2e8f0);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ============================= */
+/* Section Cards */
+/* ============================= */
+
+section{
+    transition: all 0.3s ease;
+    border-bottom: 2px solid #cbd5e1; /* line separator between sections */
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+section:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* ============================= */
+/* Headers */
+/* ============================= */
+
+h1,h2{
+    letter-spacing:0.5px;
+}
+
+/* ============================= */
+/* Inputs */
+/* ============================= */
+
+input, textarea{
+    border:1px solid #cbd5e1;
+    transition: all 0.2s ease;
+}
+
+input:focus, textarea:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 0 3px rgba(59,130,246,0.2);
+}
+
+/* ============================= */
+/* Buttons */
+/* ============================= */
+
+button{
+    font-weight:600;
+    transition: all 0.2s ease;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+button:active{
+    transform:scale(0.96);
+}
+
+/* Encrypt Button */
+.bg-blue-500{
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
+}
+
+/* Decrypt Button */
+.bg-red-500{
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+}
+
+/* Brute Force */
+.bg-green-600{
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+/* ============================= */
+/* Result Boxes */
+/* ============================= */
+
+#result,
+#result2,
+#result3{
+    background:#fef9c3;
+    border-left:5px solid #facc15;
+    font-weight:600;
+    letter-spacing:1px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Scrollable result for brute-force outputs */
+.scrollable-result {
+    max-height: 300px; /* adjust height */
+    overflow-y: auto;  /* vertical scroll */
+    padding: 10px;
+    border-left: 5px solid #facc15;
+    background: #fef9c3;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    border-radius: 5px;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #3b82f6 #fef9c3; /* Firefox */
+}
+
+/* Chrome, Edge, Safari scrollbar */
+.scrollable-result::-webkit-scrollbar {
+    width: 8px;
+}
+.scrollable-result::-webkit-scrollbar-track {
+    background: #fef9c3;
+}
+.scrollable-result::-webkit-scrollbar-thumb {
+    background-color: #3b82f6;
+    border-radius: 4px;
+}
+
+/* RSA output */
+#outputText,
+#outputText1{
+    background:#f8fafc;
+}
+
+/* ============================= */
+/* Content Menu */
+/* ============================= */
+
+ul li a{
+    transition: all 0.2s ease;
+}
+
+ul li a:hover{
+    padding-left:6px;
+    color:#22c55e;
+}
+
+/* ============================= */
+/* Header */
+/* ============================= */
+
+header{
+    background:linear-gradient(135deg,#ffffff,#f8fafc);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+header img{
+    width: 50px; /* smaller logo */
+    height: 50px;
+}
+
+/* ============================= */
+/* Smooth Scroll */
+/* ============================= */
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* ============================= */
+/* Mobile Improvements */
+/* ============================= */
+
+@media (max-width:768px){
+
+section{
+    padding:20px;
+}
+
+button{
+    width:100%;
+}
+
+header img{
+    width: 40px;
+    height: 40px;
+}
+
+}
